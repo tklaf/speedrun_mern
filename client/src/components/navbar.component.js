@@ -6,21 +6,21 @@ export default class Navbar extends Component {
 
     render(){
         return(
-            <nav className='navbar navbar-dark'>
-            <Link to = "/" className="navbar-brand">Speedrun Tracker</Link>
-            <div>
-                <ul className="navbar-nav">
-                    <li className="nav-link">
-                        <Link to="/">Speedruns</Link>
-                    </li>
-                    <li className="nav-link">
-                        <Link to="/create">Create Speedrun Log</Link>
-                    </li>
-                    <li className="nav-link">
-                        <Link to="/user">Create User</Link>
-                    </li>
-                </ul>
-            </div>
+            <nav className='navbar navbar-expand-lg'>
+                <Link to = "/" className="navbar-brand styles">Speedrun Tracker</Link>
+                <div className='navbar-collapse'>
+                    <ul className="navbar-nav">
+                        <li className="nav-link">
+                            <Link to="/" className="styles">Speedruns</Link>
+                        </li>
+                        <li className="nav-link">
+                            <Link to="/create" className="styles">Create Speedrun Log</Link>
+                        </li>
+                        <li className="nav-link">
+                            <Link to="/user" className="styles">Create User</Link>
+                        </li>
+                    </ul>
+                </div>
             </nav>
         )
     }

@@ -1,6 +1,7 @@
 import React, {Component} from 'react'
 import {Link} from 'react-router-dom'
 import axios from 'axios'
+import {Table, Container, Row, Col} from 'react-bootstrap'
 
 const Speedrun = props => (
     <tr>
@@ -53,8 +54,8 @@ export default class SpeedrunsList extends Component{
     render(){
         return(
             <div>
-                <h3>Logged Speedruns</h3>
-                <table>
+                <h2 className='text-center font-weight-bold'>Logged Speedruns</h2>
+                <Table striped bordered hover>
                     <thead>
                         <tr>
                             <th>Username</th>
@@ -65,12 +66,13 @@ export default class SpeedrunsList extends Component{
                             <th>Duration(Milliseconds)</th>
                             <th>Date Played</th>
                             <th>Platform Played</th>
+                            <th>Make Changes</th>
                         </tr>
                     </thead>
                     <tbody>
                         {this.SpeedrunList()}
                     </tbody>
-                </table> 
+                </Table> 
             </div>
         )
     }
