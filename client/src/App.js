@@ -11,7 +11,7 @@ import "bootstrap/dist/css/bootstrap.min.css";
 function App() {
   return (
     <Router>
-      <div className='container'>
+      <div>
       <Navbar />
       <br/>
       <Route path = '/' exact component = {SpeedrunsList} />

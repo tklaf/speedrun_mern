@@ -2,6 +2,8 @@ import React, {Component} from 'react'
 import axios from 'axios'
 import DatePicker from 'react-datepicker'
 import "react-datepicker/dist/react-datepicker.css"
+import {Row} from 'react-bootstrap'
+import "../styles/createSpeedrun.css"
 
 export default class CreateSpeedrun extends Component{
     constructor(props) {
@@ -21,10 +23,10 @@ export default class CreateSpeedrun extends Component{
         this.state = {
             gameTitle: '',
             username: '',
-            timeTookH: 0,
-            timeTookM: 0,
-            timeTookS: 0,
-            timeTookMS: 0,
+            timeTookH: '',
+            timeTookM: '',
+            timeTookS: '',
+            timeTookMS: '',
             datePlayed: new Date(),
             platformPlayed: '',
             users:[]
@@ -106,77 +108,81 @@ export default class CreateSpeedrun extends Component{
 
     render(){
         return(
-            <div>
+            <div className='card text-center'>
                 <h3>Create New Speedrun</h3>     
-                <form onSubmit={this.onSubmit}>   
-                    <div>
-                        <label>Username: </label>
-                        <select ref="userInput"
-                        required
-                        value={this.state.username}
-                        onChange={this.onChangeUsername}>
-                            {
-                                this.state.users.map(function(user){
-                                    return <option
-                                    key = {user}
-                                    value = {user}>{user}
-                                    </option>
-                                })
-                            }
-                        </select>
-                    </div>
-                    <div>
-                    <label>Game Title: </label>
-                    <input type='text'
-                    required
-                    value={this.state.gameTitle}
-                    onChange={this.onChangeGameTitle} />
-                    </div>
-                    <div>
-                    <label>Duration(Hours): </label>
-                    <input type='text'
-                    required
-                    value={this.state.timeTookH}
-                    onChange={this.onChangeTimeTookH} />
-                    </div>
-                    <div>
-                    <label>Duration(Minutes): </label>
-                    <input type='text'
-                    required
-                    value={this.state.timeTookM}
-                    onChange={this.onChangeTimeTookM} />
-                    </div>
-                    <div>
-                    <label>Duration(Seconds): </label>
-                    <input type='text'
-                    required
-                    value={this.state.timeTooks}
-                    onChange={this.onChangeTimeTookS} />
-                    </div>
-                    <div>
-                    <label>Duration(Milliseconds): </label>
-                    <input type='text'
-                    required
-                    value={this.state.timeTookMS}
-                    onChange={this.onChangeTimeTookMS} />
-                    </div>
-                    <div>
-                    <label>Date Played: </label>
-                    <div>
-                        <DatePicker
-                            selected={this.state.datePlayed}
-                            onChange={this.onChangeDatePlayed}
-                        />
-                    </div>
-                    </div>
-                    <div>
-                    <label>Platform Played On: </label>
-                    <div>
-                    <input type='text'
-                    required
-                    value={this.state.platformPlayed}
-                    onChange={this.onChangePlatformPlayed} />
-                    </div>
+                <form onSubmit={this.onSubmit}>
+                    <div className="p-5">
+                        <label>Username: </label>   
+                        <div  className="pb-2">
+                            <select ref="userInput"
+                            required
+                            value={this.state.username}
+                            onChange={this.onChangeUsername}>
+                                {
+                                    this.state.users.map(function(user){
+                                        return <option
+                                        key = {user}
+                                        value = {user}>{user}
+                                        </option>
+                                    })
+                                }
+                            </select>
+                        </div>
+                            <div>
+                            <input type='text'
+                            required
+                            placeholder='Game Title'
+                            value={this.state.gameTitle}
+                            onChange={this.onChangeGameTitle} />
+                            </div>
+                            <Row className ='justify-content-center p-2'>
+                                <div className="pr-2">
+                                <input type='text'
+                                required
+                                placeholder="Duration(Hours)"
+                                value={this.state.timeTookH}
+                                onChange={this.onChangeTimeTookH} />
+                                </div>
+                                <div className="pr-2">
+                                <input type='text'
+                                required
+                                placeholder="Duration(Minutes)"
+                                value={this.state.timeTookM}
+                                onChange={this.onChangeTimeTookM} />
+                                </div>
+                                <div className="pr-2">
+                                <input type='text'
+                                required
+                                placeholder="Duration(Seconds)"
+                                value={this.state.timeTooks}
+                                onChange={this.onChangeTimeTookS} />
+                                </div>
+                                <div className="pr-2">
+                                <input type='text'
+                                required
+                                placeholder="Duration(Milliseconds)"
+                                value={this.state.timeTookMS}
+                                onChange={this.onChangeTimeTookMS} />
+                                </div>
+                            </Row>
+                            <div>
+                            <div>
+                            <input type='text'
+                            required
+                            placeholder="Platform Played On"
+                            value={this.state.platformPlayed}
+                            onChange={this.onChangePlatformPlayed} />
+                            </div>
+                            </div>
+                            <div>
+                            <label>Date Played: </label>
+                            <div>
+                                <DatePicker
+                                    selected={this.state.datePlayed}
+                                    onChange={this.onChangeDatePlayed}
+                                />
+                            </div>
+                        </div>
                     </div>
                     <div>
                         <input type="submit" value="Create Speedrun" />

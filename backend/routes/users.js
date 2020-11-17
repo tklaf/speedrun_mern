@@ -16,5 +16,15 @@ router.route('/add').post((req, res) => {
     .then(() => res.json('User added'))
     .catch(e => res.status(400).json('Error: ' + e))
 })
+router.route('/:id').get((req, res) =>{
+    User.findById(req.params.id)
+    .then(user => res.json(user))
+    .catch(e => res.status(400).json('Error: ' + e))
+})
+router.route('/:id').delete((req, res) =>{
+    User.findByIdAndDelete(req.params.id)
+    .then(() => res.json('User Deleted'))
+    .catch(e => res.status(400).json('Error: ' + e)) 
+})
 
 module.exports = router
